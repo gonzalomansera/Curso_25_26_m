@@ -32,6 +32,15 @@ function esNumero(valor:any):boolean{
 }
 esNumero("as");
 
+let cualquierCosa:any ="texto";
+cualquierCosa=9;
+cualquierCosa=true;
+
+//Usar mejor unknown
+let valorDesconocido:unknown="no se "
+if(typeof valorDesconocido ==="string"){
+
+}
 // Calcular el promedio de los elementos de un array de numeros 
 function calcularPromedio(numeros:number[]):number{
     if(numeros.length===0){
@@ -215,3 +224,153 @@ console.log(calculadora("multiplicar", op1));
 console.log(calculadora("dividir", op2));       
 console.log(calculadora("potencia",op1));
 //Ejercicio terminado
+
+function sumaVarios(n1:number=0, n2:number=0,n3?:number):number{
+return n1;
+}
+
+//-------------MAP------------------------ 
+const edades = new Map<string, number>();
+edades.set("Gonzalo",22);
+// Para saber si existe la clave 
+edades.has("Gonzalo")
+
+
+
+interface Datos{
+    nombre: string;
+    email: string;
+    cp:number;
+}
+
+//Para crear map con clave string y el valor sea tipo interface 
+
+const usuarios2= new Map<string,Datos>();
+usuarios2.set("Mario",{
+    nombre:"Mario",
+    email:"apuntesparamario@gmail.com",
+    cp:18007
+    }
+)
+
+
+//---------SET------------
+
+const mySet = new Set<number>();
+mySet.add(19);
+
+/* Ejercicio 1: Crear un sistema de categorías:
+- Crear un map donde cada categoria tiene un SET de productos
+- Crear las siguientes funciones: agregarProducto (que devolvera true o false),
+mostrarCatalogo que me muestre el catalogo completo.
+- Adicionalmente crear una funcion llamada buscarProducto que le pase un string 
+y busque el nombre del producto
+-----NOTA: El GET A VECES DA UNDEFINED
+*/
+
+const catalogo = new Map<string, Set<string>>();
+
+function addProduct(category: string, product:string):boolean{
+    // Si el catalogo no existe lo creamos.
+    if(!catalogo.has(category)){
+        catalogo.set(category,new Set<string>());
+    }
+    // Añadimos el producto a la categoria 
+    catalogo.get(category)?.add(product);
+    return true;
+}
+addProduct("Electronica","Portatil HP");
+addProduct("Electronica","Portatil ASUS");
+addProduct("Electronica","Portatil VICTUS");
+addProduct("Deportes","Pala BullPadel");
+addProduct("Deportes","Botas nike");
+addProduct("Deportes","Camiseta GCF");
+
+function showCatalog():void{
+    console.log("--------- Catálogo de Productos-----------")
+    for (const [category , products] of catalogo){
+        console.log(`✅Categoria: ${category} -- Numero de productos ${products.size}`)
+        for(const product of products){
+            console.log(` -  ${product}`)
+        }
+    }
+}
+
+function searhProducts(nameProduct:string):string []{
+    console.log("--------------Producto---------------")
+    const categoriasEncontradas:string[] = [];
+    for (const [category , products] of catalogo){
+        if(products.has(nameProduct)){
+            categoriasEncontradas.push(category);
+        }
+    }
+    return categoriasEncontradas;
+}
+console.log(`Las categorias encontradas del producto son ${searhProducts("Teclado")}`)
+
+/* Ejercicio 2: Crear un sistema de reservas de un restaurante que tenga:
+- Un map con clave fecha de la reserva, el formato es YYYY-MM-dd
+y el valor es un SET con el nombre o (DNI) de los clientes que han reservado ese dia 
+
+Funciones: agregarReserva(),cancelarReserva(),mostrarReserva() 
+- estadisticaReservas(): reservas totales, media de reservas, reservas por dia..
+*/
+
+const reservasRestaurante = new Map<string, Set<string>>();
+
+// Agregar una reserva
+function addReserve(fecha: Date, nombre: string): void {
+    const fechaISO = fecha.toISOString().split("T")[0]; 
+    if (!reservasRestaurante.has(fechaISO)) {
+        reservasRestaurante.set(fechaISO, new Set<string>());
+    }
+    reservasRestaurante.get(fechaISO)?.add(nombre);
+}
+
+// Eliminar una reserva
+function deleteReserve(fecha: Date, nombre: string): void {
+    const fechaISO = fecha.toISOString().split("T")[0];
+    const reservasDia = reservasRestaurante.get(fechaISO);
+    if (reservasDia?.has(nombre)) {
+        reservasDia.delete(nombre);
+        console.log(`❌ Reserva de ${nombre} en ${fechaISO} cancelada`);
+    } else {
+        console.log(`⚠️ No existe reserva de ${nombre} en ${fechaISO}`);
+    }
+}
+
+// Mostrar una reserva
+function showReserve(fecha: Date, nombre: string): void {
+    const fechaISO = fecha.toISOString().split("T")[0];
+    const reservasDia = reservasRestaurante.get(fechaISO);
+    if (reservasDia?.has(nombre)) {
+        console.log(`✅ Reserva de ${nombre} hecha el ${fechaISO} está confirmada`);
+    } else {
+        console.log(`⚠️ No hay reserva de ${nombre} el ${fechaISO}`);
+    }
+}
+
+// Mostrar estadísticas
+function reserveStatistics(): void {
+    let totales = 0;
+    for (const [fecha, nombres] of reservasRestaurante) {
+        console.log(`📅 ${fecha} → ${nombres.size} reservas`);
+        totales += nombres.size;
+    }
+    const mediaReservas = reservasRestaurante.size > 0 ? totales / reservasRestaurante.size : 0;
+    console.log(`\n📊 Total de reservas: ${totales}`);
+    console.log(`📈 Media de reservas por día: ${mediaReservas.toFixed(2)}`);
+}
+
+// --- Pruebas ---
+addReserve(new Date("2025-10-25"), "Juan");
+addReserve(new Date("2025-10-25"), "María");
+addReserve(new Date("2025-10-26"), "Carlos");
+
+showReserve(new Date("2025-10-25"), "Juan");
+showReserve(new Date("2025-10-25"), "Lucía");
+
+deleteReserve(new Date("2025-10-25"), "María");
+deleteReserve(new Date("2025-10-25"), "Lucía");
+
+reserveStatistics();
