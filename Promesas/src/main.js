@@ -1,7 +1,8 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import './style.css';
+import javascriptLogo from './javascript.svg';
+import viteLogo from '/vite.svg';
+import { setupCounter } from './counter.js';
+import { dataJSONAsync, dataJSONPromise, getWeather } from './helpers/utils.js';
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -20,5 +21,6 @@ document.querySelector('#app').innerHTML = `
     </p>
   </div>
 `
-
-setupCounter(document.querySelector('#counter'))
+;
+setupCounter(document.querySelector('#counter'));
+getWeather('Granada');
