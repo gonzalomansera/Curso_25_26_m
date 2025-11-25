@@ -36,10 +36,11 @@ export function createImageCard(image,onImageClick,onFavoriteToggle){
 
     //Evento de la 
     card.onclick=()=>{
-        alert(image.id) //Se sustituira por onImageClick
+        onImageClick(image.id); //Se sustituira por onImageClick
     }
     return {
         element:card,
+        
         //Aqui iran las funciones 
         //isFavorito <= es fav la imagen?
         //setFavorite <= convertir en fav esta imagen 

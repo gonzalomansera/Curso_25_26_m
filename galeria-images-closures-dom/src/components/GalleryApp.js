@@ -29,19 +29,26 @@ export default function createGalleryApp() {
 
   // Main
   const main = document.createElement("main")
-  main.className=" max-"
+
 
   const counterComponent = document.createElement("h2")
-  counterComponent.textContent="Aqui ira el FavoritesCounter"
+
 
   const imageModal=document.createElement("img")
-  imageModal.textContent=" Aqui ira el componente imageModal"
+  imageModal.textContent="Imagen"
 
   //grid de imagenes 
   const gridComponent= document.createElement("h2")
-  gridComponent.textContent="Aqui ira el cocmponente grid"
+
   const imageComponent= createImageGrid(imagesData);
 
+  // Funcion para abrir el modal 
+  const handleImageClick = (imageId) => {
+            const modal = createImageModal(imageId);
+            if (modal) {
+                container.appendChild(modal.element);
+            }
+        };
   
   
   //Añadimos todo al main 
