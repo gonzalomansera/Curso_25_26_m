@@ -1,3 +1,4 @@
+/*
 import { peliculas } from "../db/data";
 const PORT= import.meta.env.VITE_PORT
 const URL= import.meta.env.VITE_URL
@@ -109,3 +110,4 @@ export async function createEjercicio3Fetch(){
         throw new Error(error)
     }
 }
+    */

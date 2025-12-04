@@ -1,6 +1,6 @@
+/*
 import { alojamientos } from "../db/data";
 import fetching from "../utils/fetching";
-
 export async function createEjercicio4() {
 
     const renderTable = (alojamientosArray) => {
@@ -85,3 +85,4 @@ export async function createEjercicio4() {
 }
 
 export default createEjercicio4;
+*/

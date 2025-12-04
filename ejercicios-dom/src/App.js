@@ -1,13 +1,8 @@
-import { createEjercicio1, createEjercicio1Fetch } from "./helpers/ejercicio-1"
-import { createEjercicio2, createEjercicio2Fetch } from "./helpers/ejercicio-2";
-import { createEjercicio3, createEjercicio3Fetch } from "./helpers/ejercicio-3";
-import createEjercicio4 from "./helpers/ejercicio-4";
+import createEjercicio10 from "./helpers/ejercicio-10";
 
 
 
-export default function createApp() {
-  const app= document.getElementById("app")
-  app.appendChild(createEjercicio4().render())
-  
-  
+export default async function createApp(){
+    const app = document.getElementById("app")
+    app.appendChild(await createEjercicio10())
 }

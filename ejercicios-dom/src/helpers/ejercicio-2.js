@@ -1,3 +1,4 @@
+/*
 import { tareas } from "../db/data";
 
 const PORT= import.meta.env.VITE_PORT
@@ -79,3 +80,4 @@ export async function createEjercicio2Fetch(){
         throw new Error(error)
     }
 }
+*/

@@ -1,0 +1,74 @@
+{
+  "movies": [
+    {
+      "id": "m1",
+      "title": "Inception",
+      "director": "Christopher Nolan",
+      "year": 2010,
+      "genre": "Ciencia Ficción"
+    },
+    {
+      "id": "m2",
+      "title": "Parasite",
+      "director": "Bong Joon-ho",
+      "year": 2019,
+      "genre": "Drama"
+    },
+    {
+      "id": "m3",
+      "title": "The Dark Knight",
+      "director": "Christopher Nolan",
+      "year": 2008,
+      "genre": "Acción"
+    },
+    {
+      "id": "m4",
+      "title": "Interstellar",
+      "director": "Christopher Nolan",
+      "year": 2014,
+      "genre": "Ciencia Ficción"
+    },
+    {
+      "id": "m5",
+      "title": "The Matrix",
+      "director": "Lana y Lilly Wachowski",
+      "year": 1999,
+      "genre": "Ciencia Ficción"
+    },
+    {
+      "id": "m6",
+      "title": "Whiplash",
+      "director": "Damien Chazelle",
+      "year": 2014,
+      "genre": "Drama"
+    },
+    {
+      "id": "m7",
+      "title": "Toy Story",
+      "director": "John Lasseter",
+      "year": 1995,
+      "genre": "Animación"
+    },
+    {
+      "id": "m8",
+      "title": "Gladiator",
+      "director": "Ridley Scott",
+      "year": 2000,
+      "genre": "Acción"
+    },
+    {
+      "id": "m9",
+      "title": "The Social Network",
+      "director": "David Fincher",
+      "year": 2010,
+      "genre": "Drama"
+    },
+    {
+      "id": "m10",
+      "title": "La La Land",
+      "director": "Damien Chazelle",
+      "year": 2016,
+      "genre": "Musical"
+    }
+  ]
+}

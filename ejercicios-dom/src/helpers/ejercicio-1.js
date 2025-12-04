@@ -1,3 +1,4 @@
+
 //Importamos las variables .env
 
 
@@ -18,6 +19,7 @@ Conceptos que practicarás
 ✅ classList.add()
 Resultado Esperado
 */
+/*
 const PORT= import.meta.env.VITE_PORT
     const URL= import.meta.env.VITE_URL
     const URL_PORT=`${URL}:${PORT}`
@@ -63,4 +65,4 @@ export async function  createEjercicio1Fetch() {
     }
 
 
- 
+*/
