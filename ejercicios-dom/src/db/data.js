@@ -17,7 +17,7 @@ export const tareas = [
 
 // Datos para el Ejercicio 3: PelÃ­culas    
 export const peliculas = [
-  { id: 1, titulo: "Inception",year: 2010, rating: 8.8 },
+  { id: 1, titulo: "Inception",year: 2010, rating: 4.8 },
   { id: 2, titulo: "The Dark Knight",year: 2008, rating: 9.0 },
   { id: 3, titulo: "Interstellar",year: 2014, rating: 8.6 },
   { id: 4, titulo: "Pulp Fiction",year: 1994, rating: 8.9 },

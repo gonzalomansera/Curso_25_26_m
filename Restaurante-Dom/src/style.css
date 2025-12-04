@@ -1,0 +1,473 @@
+/* ======================================= */
+/* Estilos Generales y Reseteo Básico 🍔   */
+/* ======================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --color-primario: #FF6B35;           /* Naranja vibrante para énfasis */
+    --color-primario-hover: #E55A2B;     /* Naranja más oscuro para hover */
+    --color-secundario: #4ECDC4;         /* Turquesa para éxito/buena valoración */
+    --color-secundario-hover: #3BA89F;   /* Turquesa más oscuro */
+    --color-fondo: #F8F9FA;              /* Fondo claro general */
+    --color-fondo-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --color-tarjeta: #ffffff;            /* Fondo para tarjetas/reseñas */
+    --color-texto: #2D3748;              /* Texto principal oscuro */
+    --color-texto-claro: #718096;        /* Texto secundario */
+    --color-borde-fino: #E2E8F0;         /* Bordes sutiles */
+    --color-borde-hover: #CBD5E0;        /* Bordes en hover */
+    --sombra-suave: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --sombra-media: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --sombra-fuerte: 0 8px 24px rgba(0, 0, 0, 0.16);
+    --radio-borde: 16px;
+    --transicion: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, #F5F7FA 0%, #E8ECF1 100%);
+    background-attachment: fixed;
+    color: var(--color-texto);
+    line-height: 1.7;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+/* ======================================= */
+/* Contenedor Principal (Sticky Footer)    */
+/* ======================================= */
+
+.app-container { 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ======================================= */
+/* Header (GonzaloAdvisor)                 */
+/* ======================================= */
+
+.site-header { 
+    background: linear-gradient(135deg, var(--color-primario) 0%, #FF8C42 100%);
+    color: white;
+    padding: 2rem 2rem;
+    font-size: 2.75rem;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: var(--sombra-media);
+    letter-spacing: -0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.site-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+    opacity: 0.3;
+}
+
+.site-header > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ======================================= */
+/* Contenido Principal (Listado de Tarjetas) */
+/* ======================================= */
+
+.main-content { 
+    flex-grow: 1;
+    padding: 2.5rem 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto; 
+    width: 100%;
+    
+    /* Configuración GRID para las tarjetas de restaurante */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+/* ======================================= */
+/* Tarjeta de Restaurante (CLASE: divRestaurant) */
+/* ⚠️ Debes añadir esta clase a 'divRestaurant' en tu JS ⚠️ */
+/* ======================================= */
+
+.review-card {
+    background-color: var(--color-tarjeta);
+    padding: 2rem;
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-suave);
+    transition: var(--transicion);
+    border: 1px solid var(--color-borde-fino);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.review-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primario), var(--color-secundario));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--sombra-fuerte);
+    border-color: var(--color-borde-hover);
+}
+
+.review-card:hover::before {
+    transform: scaleX(1);
+}
+
+.review-card h3 {
+    color: var(--color-primario);
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-borde-fino);
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.3px;
+}
+
+.review-card > p {
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+    color: var(--color-texto-claro);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.review-card > p:first-of-type { /* Estilo para la Categoría */
+    font-style: italic;
+    color: var(--color-texto);
+    font-weight: 500;
+    font-size: 1.05rem;
+}
+
+.review-card > p:nth-child(3) { /* Estilo para Rating (Valoración) */
+    font-weight: 600;
+    color: var(--color-secundario);
+    font-size: 1.25rem;
+}
+
+.review-card > p:nth-child(4) { /* Estilo para Ubicación */
+    color: var(--color-texto-claro);
+    font-size: 0.95rem;
+}
+
+/* ======================================= */
+/* Formulario de Reseña                    */
+/* ======================================= */
+
+.review-card form {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--color-borde-fino);
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.review-card input[type="text"] {
+    flex: 1 1 200px;
+    min-width: 200px;
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--color-borde-fino);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: var(--transicion);
+    background-color: #FAFBFC;
+    color: var(--color-texto);
+}
+
+.review-card input[type="text"]:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.review-card input[type="text"]::placeholder {
+    color: #A0AEC0;
+}
+
+.review-card select {
+    padding: 0.875rem 1rem;
+    border: 2px solid var(--color-borde-fino);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background-color: #FAFBFC;
+    color: var(--color-texto);
+    cursor: pointer;
+    transition: var(--transicion);
+    min-width: 80px;
+}
+
+.review-card select:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+.review-card button {
+    padding: 0.875rem 1.75rem;
+    background: linear-gradient(135deg, var(--color-secundario) 0%, var(--color-secundario-hover) 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transicion);
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 8px rgba(78, 205, 196, 0.3);
+    flex: 0 0 auto;
+}
+
+.review-card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(78, 205, 196, 0.4);
+    background: linear-gradient(135deg, var(--color-secundario-hover) 0%, var(--color-secundario) 100%);
+}
+
+.review-card button:active {
+    transform: translateY(0);
+}
+
+
+/* ======================================= */
+/* Contenedor de Reseñas                   */
+/* ======================================= */
+
+.contenedor-reseñas {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--color-borde-fino);
+}
+
+.contenedor-reseñas h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-borde-fino);
+}
+
+/* Estilos para las reseñas individuales */
+.contenedor-reseñas > p {
+    background-color: #F7FAFC;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    border-left: 3px solid var(--color-secundario);
+    color: var(--color-texto);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    transition: var(--transicion);
+    font-weight: 400;
+}
+
+/* Estilo para párrafos que preceden a un botón (probablemente las estrellas) */
+.contenedor-reseñas > p:has(+ button) {
+    background-color: transparent;
+    padding: 0.25rem 1rem 0.5rem 1rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0.75rem;
+    border-left: none;
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+/* Fallback para navegadores que no soportan :has() */
+@supports not selector(:has(*)) {
+    .contenedor-reseñas > p:nth-child(3n+2) {
+        background-color: transparent;
+        padding: 0.25rem 1rem 0.5rem 1rem;
+        margin-top: -0.5rem;
+        margin-bottom: 0.75rem;
+        border-left: none;
+        font-size: 1.1rem;
+    }
+}
+
+.contenedor-reseñas button {
+    padding: 0.5rem 1rem;
+    background-color: #FC8181;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--transicion);
+    margin-bottom: 1.25rem;
+    margin-left: 1rem;
+    display: inline-block;
+}
+
+.contenedor-reseñas button:hover {
+    background-color: #F56565;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(245, 101, 101, 0.3);
+}
+
+.contenedor-reseñas button:active {
+    transform: translateY(0);
+}
+
+/* Separador visual entre reseñas múltiples */
+.contenedor-reseñas > button + p {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--color-borde-fino);
+}
+
+/* ======================================= */
+/* Footer                                  */
+/* ======================================= */
+
+.site-footer { 
+    background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%);
+    color: #CBD5E0;
+    text-align: center;
+    padding: 1.5rem 20px;
+    font-size: 0.9rem;
+    width: 100%;
+    margin-top: auto;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.site-footer p {
+    margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+/* ======================================= */
+/* Media Queries (Responsividad)           */
+/* ======================================= */
+
+@media (max-width: 768px) {
+    .site-header {
+        font-size: 2rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .main-content {
+        padding: 1.5rem 1rem;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .review-card {
+        padding: 1.5rem;
+    }
+    
+    .review-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .review-card form {
+        flex-direction: column;
+    }
+
+    .review-card input[type="text"],
+    .review-card select,
+    .review-card button {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .contenedor-reseñas > p {
+        font-size: 0.9rem;
+        padding: 0.875rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header {
+        font-size: 1.75rem;
+        padding: 1.25rem 1rem;
+    }
+
+    .main-content {
+        padding: 1rem 0.75rem;
+    }
+
+    .review-card {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+
+    .review-card h3 {
+        font-size: 1.35rem;
+    }
+}
+
+/* ======================================= */
+/* Animaciones y Efectos Adicionales       */
+/* ======================================= */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.review-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-fondo);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-borde-hover);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-texto-claro);
+}

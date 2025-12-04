@@ -4,10 +4,6 @@ const URL= import.meta.env.VITE_URL
 const URL_PORT=`${URL}:${PORT}`
 
 
-
-
-
-
 export function createEjercicio3(){
     const app = document.getElementById("app")
     const container= document.createElement("div")
@@ -35,7 +31,9 @@ export function createEjercicio3(){
         
         const rating = document.createElement("p")
         rating.className="movie-rating"
-        rating.textContent=`${peli.rating}/10`
+        const numStar= Math.floor(peli.rating/2)
+        const estrella= "⭐".repeat(numStar)
+        rating.textContent=`${peli.rating}/10 ${estrella}`
 
         divPeli.appendChild(titulo)
         divPeli.appendChild(año)
@@ -56,10 +54,12 @@ export async function createEjercicio3Fetch(){
         const container= document.createElement("div")
         container.classList="movies-container"
         //  H1
-        const encabezado=document.createElement("h1")
-        encabezado.classList="movie-title"
-        encabezado.textContent="📽️Peliculas"
-        container.appendChild(encabezado)
+        const encabezado=document.createElement("div")
+        const h1=document.createElement("h1")
+        h1.classList="movie-title"
+        h1.textContent="📽️Peliculas"
+        encabezado.appendChild(h1)
+        container.appendChild(encabezado);
 
 
         const response= await fetch(`${URL_PORT}/peliculas`)
@@ -70,7 +70,7 @@ export async function createEjercicio3Fetch(){
         const data = await response.json();
 
         data.forEach(peli=>{
-                const divPeli= document.createElement("div")
+            const divPeli= document.createElement("div")
             divPeli.className="movie-card"
 
             const titulo= document.createElement("h3")
@@ -84,7 +84,19 @@ export async function createEjercicio3Fetch(){
         
             const rating = document.createElement("p")
             rating.className="movie-rating"
-            rating.textContent=`${peli.rating}/10`
+            
+            const numStar= Math.floor(peli.rating/2)
+            const estrella= "⭐".repeat(numStar)
+            rating.textContent=`${peli.rating}/10 ${estrella}`
+            
+            const imagen = document.createElement("img")
+            imagen.src=peli.imagen
+            imagen.alt=peli.titulo
+            imagen.classList.add("movie-image")
+            divPeli.appendChild(imagen)
+
+
+            
 
             divPeli.appendChild(titulo)
             divPeli.appendChild(año)
